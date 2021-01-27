@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+scripts/test.js
+scripts/start.js
+scripts/build.js
+package.json
+package-lock.json
+config/webpackDevServer.config.js
+config/webpack.config.js
+config/pnpTs.js
+config/paths.js
+config/modules.js
+config/jest/fileTransform.js
+config/jest/cssTransform.js
+config/getHttpsConfig.js
+config/env.js
