@@ -1,0 +1,14 @@
+.Hourly {
+    width: 10em;
+    background-color: rgba(0, 52, 89, 0.2);
+    height: 15em;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 2px 3px #003459;
+    color: white;
+    margin: 2em;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+
