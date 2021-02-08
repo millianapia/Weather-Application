@@ -1,0 +1,70 @@
+.City{
+    color: white;
+    margin-top: 49px;
+    margin-left: 8%;
+    font-size: 60px;
+    margin-bottom: 0;
+
+}
+
+
+.MuiGrid-spacing-xs-3{
+    margin: 10px
+}
+
+.Date{
+    color:white;
+    margin-left: 8%;
+    font-size: 30px;
+    margin-top: 0;
+    font-weight: lighter;
+
+
+
+}
+
+
+
+.Information{
+    width: 80%;
+    height: 200px;  
+      margin-left: 8%;
+      margin-right: 8%;
+    flex-basis: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    align-self: flex-start;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.Temp{
+    width: 80%;
+    margin-left: 8%;
+
+    height: 200px;  
+    flex-basis: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    align-self: flex-start;
+
+
+}
+
+.MuiGrid-spacing-xs-4{
+    width: 0;
+}
+
+.Time{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}

@@ -16,3 +16,7 @@
 
 }
 
+
+.SearchBar:focus{
+    outline: none;
+}

@@ -1,12 +1,19 @@
 import React, {Component} from "react"
 import axios from "axios"
-import Days from "./Days/Days"
 import Today from "./Today/Today"
+import { Box, Divider, Grid, GridList, GridListTile, makeStyles, Typography } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+
+
 //import City from "";
 
 import classes from "./Weather.module.css"
+import InformationCard from "./InformationCard/InformationCard";
+import Temperature from "../Weather/Temperature/Temperature"
+import Hourly from "./Hourly/Hourly"
 
 const text = ""
+const city = "Bergen"
 
 class Weather extends Component {
 
@@ -28,7 +35,7 @@ class Weather extends Component {
     }
 
     componentDidMount() {
-        let url = "http://api.openweathermap.org/data/2.5/weather?q=London&?units=metric&APPID=" + {text};
+         let url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&?units=metric&APPID=" + text;
         axios
           .get(url)
           .then(response => {
@@ -47,19 +54,68 @@ class Weather extends Component {
                   long: response.data.coord.lon,
               })
               console.log(response)
-              })
+              
+            })
         .catch(error => {
-          console.log("weather " + error);
+          console.log( error);
         })
-      }
+      } 
 
 
     render() {
+        const moment = require('moment');
+        let now = moment();
+/* 
+        let hourly = <p style={{textAlign: "center"}}>Something went wrong</p>
+        let key = 0;
+        if(!this.state.error){
+            hourly = this.state.hourly.map (hour =>{
+                key = key+1;
+                return(
+                    <Hourly
+                        key={key}
+                        hour = {now.get("hour") + key }
+                        temperature={hour.temp}
+                        weather={hour.weather[0].main}
+                        />
+                )
+            })
+        } */
+
+
         return(
-            <React.Fragment>       
-                <p>test {this.state.currentTemp}</p>             
-                <Today/>
-            </React.Fragment>
+            <Grid container direction="column">
+                <h1 className={classes.City}>{city}</h1>
+                <h5 className={classes.Date}>{now.format("DD-MM-YYYY")}</h5>
+                   <Grid container spacing={2}>
+                   <Grid item xs={12} lg={6} >
+                       <div className={classes.Information}>
+                        <Temperature temp={this.state.currentTemp}/>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} lg={6}>
+                        <div  className={classes.Information}> 
+                        <InformationCard
+                        minTemp={this.state.minTemp}
+                        maxTemp={this.state.maxTemp}
+                        pressure={this.state.pressure}
+                        humidity={this.state.humidity}
+                        wind={this.state.wind}
+                        overcast={this.state.overcast}
+                        />
+                        </div>
+                       
+                    </Grid>
+                    </Grid>
+                    <Grid container spacing={2}>
+                 <Grid item xs={12} lg={6}>
+                         <div className={classes.Time}>
+                             
+                         </div>
+                   </Grid>
+
+                </Grid>
+            </Grid>
         )
     }
 }
