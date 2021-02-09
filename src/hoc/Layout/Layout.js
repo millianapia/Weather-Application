@@ -8,13 +8,13 @@ import SearchBar from "../../components/SearchBar/SearchBar"
 class Layout extends Component{
     render(){
         return(
-            <React.Fragment>
+            <div className={classes.App}>
                 <div className={classes.Content}>
                     <Toolbar/>
                 </div>
                 <SearchBar/>
                 <Weather/>
-            </React.Fragment>
+            </div>
         );
     }
 }

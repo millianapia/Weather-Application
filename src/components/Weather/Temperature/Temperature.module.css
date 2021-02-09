@@ -1,0 +1,25 @@
+.Wrapper{
+    flex-basis: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    margin: 20px 0;
+    grid-gap: 30x;
+}
+
+
+.Icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: white;
+}
+
+.Temp{
+    display: block;
+    font-size: 50px;
+    font-weight: 400;
+    color:white;
+}

@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<span>Photo by <a href="https://unsplash.com/@wolfgang_hasselmann?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Wolfgang Hasselmann</a> on <a href="https://unsplash.com/s/photos/weather?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+
+<span>Photo by <a href="https://unsplash.com/@gabrielediwald?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Gabriele Diwald</a> on <a href="https://unsplash.com/s/photos/rain?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+
+<span>Photo by <a href="https://unsplash.com/@jplenio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Johannes Plenio</a> on <a href="https://unsplash.com/s/photos/lightning?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+
+<span>Photo by <a href="https://unsplash.com/@zburival?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Zbynek Burival</a> on <a href="https://unsplash.com/s/photos/clouds?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>

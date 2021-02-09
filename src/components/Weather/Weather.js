@@ -12,6 +12,7 @@ import InformationCard from "./InformationCard/InformationCard";
 import Temperature from "../Weather/Temperature/Temperature"
 import Hourly from "./Hourly/Hourly"
 
+
 const text = ""
 const city = "Bergen"
 
@@ -30,12 +31,13 @@ class Weather extends Component {
         sunrise: null,
         sunset: null,
         lat: null,
-        long: null
+        long: null,
+        main: null,
 
     }
 
     componentDidMount() {
-         let url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&?units=metric&APPID=" + text;
+         let url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=" + text;
         axios
           .get(url)
           .then(response => {
@@ -46,6 +48,7 @@ class Weather extends Component {
                   pressure: response.data.main.pressure,
                   humidity: response.data.main.humidity + '%',
                   wind :response.data.wind.speed + 'm/s',
+                  main: response.data.weather[0].main,
                   overcast : response.data.weather[0].description,
                   icon : "images/" + response.data.weather[0].icon.slice(0, 2) + ".svg",
                   sunrise : new Date(response.data.sys.sunrise*1000).toLocaleTimeString("en-GB").slice(0,4),
@@ -83,6 +86,7 @@ class Weather extends Component {
         } */
 
 
+
         return(
             <Grid container direction="column">
                 <h1 className={classes.City}>{city}</h1>
@@ -90,7 +94,7 @@ class Weather extends Component {
                    <Grid container spacing={2}>
                    <Grid item xs={12} lg={6} >
                        <div className={classes.Information}>
-                        <Temperature temp={this.state.currentTemp}/>
+                        <Temperature temp={this.state.currentTemp} main={this.state.main}/>
                         </div>
                     </Grid>
                     <Grid item xs={12} lg={6}>
@@ -102,6 +106,7 @@ class Weather extends Component {
                         humidity={this.state.humidity}
                         wind={this.state.wind}
                         overcast={this.state.overcast}
+                        main={this.state.main}
                         />
                         </div>
                        
