@@ -24,6 +24,9 @@
     font-weight: lighter;
 } 
 
+.Weather{
+    backdrop-filter: blur(2px);
+}
 
 .Information{
     width: 80%;
@@ -34,11 +37,12 @@
     display: flex;
     flex-wrap: wrap;
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 23, 31, 0.3);
     border-radius: 5px;
     align-self: flex-start;
     padding-left: 20px;
     text-align: center;
+    color:white;
 }
 
 .Temp{

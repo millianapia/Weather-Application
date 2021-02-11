@@ -10,15 +10,13 @@
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
+    color: white;
 }
 
-.Toolbar nav{
-    height: 100%;
 
-}
 
 .Logo{
-    height: 80%;
+    height: 10%;
 }
 
 @media(max-width: 499px){

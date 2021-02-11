@@ -1,18 +1,25 @@
-import React from "react"
+import React from "react";
+import Grid from "@material-ui/core/Grid";
 
-import WeatherGenerator from "../../WeatherGenerator/WeatherGenerator"
-import classes from "./Temperature.module.css"
+import WeatherGenerator from "../../WeatherGenerator/WeatherGenerator";
+import classes from "./Temperature.module.css";
 
-const temperature = (props) =>{
-    return(
-        <div className={classes.Wrapper}>
-            <div className={classes.Icon}><WeatherGenerator weather={props.main} size={100}/></div>
+const temperature = (props) => {
+  return (
+    <Grid container >
+      <Grid item className={classes.Icon}>
+        <WeatherGenerator weather={props.main} size={"90%"} />
+      </Grid>
+        <Grid item xs container direction="column"  justify="center">
+          <Grid item >
             <div className={classes.Temp}>{props.temp}</div>
-            <div>{props.main}</div>
+            </Grid>
+            <Grid item >
+          <div className={classes.Temp}>{props.main}</div>
+          </Grid>
+        </Grid>
+    </Grid>
+  );
+};
 
-            </div>
-    )
-}
-
-
-export default temperature
+export default temperature;

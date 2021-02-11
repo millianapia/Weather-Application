@@ -88,7 +88,7 @@ class Weather extends Component {
 
 
         return(
-            <Grid container direction="column">
+            <Grid container direction="column" className={classes.Weather}>
                 <h1 className={classes.City}>{city}</h1>
                 <h5 className={classes.Date}>{now.format("DD-MM-YYYY")}</h5>
                    <Grid container spacing={2}>

@@ -1,10 +1,10 @@
 import React from "react"
-import CloudIcon from '@material-ui/icons/Cloud';
+import Logo from '../../assets/logo.png';
 
 
 const logo = () => (
 <div>
-    <CloudIcon/> 
+    <img src={Logo} height={"50"}></img>
     </div>
     );
 
