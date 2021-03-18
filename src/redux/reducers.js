@@ -11,7 +11,6 @@ let initialState = {
         country: null,
     },
     error: null,
-    city: null,
 }
 
 const currentLocationReducer = (state = initialState.location, action) => {
@@ -56,20 +55,12 @@ const fetchingReducer = (state = initialState.fetching, action) => {
     }
 }
 
-const setCityReducer = (state = initialState.fetching, action) =>{
-    switch(action.type){
-    case actionTypes.SET_CITY:
-        return action.payload
-    default: return state}
-}
-
 
 const rootReducer = combineReducers({
     location: currentLocationReducer,
     weather: weatherReducer,
     selectedLocation: selectedLocationReducer,
     fetching: fetchingReducer,
-    setCity: setCityReducer,
 })
 
 export default rootReducer

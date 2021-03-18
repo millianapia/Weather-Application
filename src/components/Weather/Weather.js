@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
+import ReverseGeocode, { ILocation, IGeocode } from "bigdatacloud-reverse-geocoding";
 
 //import City from "";
 import {
@@ -18,7 +19,6 @@ import {
   getWeatherData,
   setFetchingTrue,
   clearLocation,
-  setCity,
 } from "../../redux/actions";
 
 import classes from "./Weather.module.css";
@@ -35,11 +35,54 @@ const Weather = ({
   getWeatherData,
   setFetching,
   weatherData,
-  setCityLongLat,
+  city, 
+  getCityData
 }) => {
-  
-  
- const {
+
+
+  const [cityObj, setCityObj] = useState({})
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+
+  useEffect(() => {
+    var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let latitude = position.coords.latitude;
+        setLat(latitude);
+        let longitude = position.coords.longitude;
+        setLong(longitude);
+        getApi(bdcApi);
+
+      });
+    }
+
+    setFetching();
+    // setLocation and getWeatherData go to Redux
+    setLocation({ position: { lat, long } });
+    getWeatherData(lat, long);
+  }, [setFetching, getWeatherData, setLocation , lat, long]);
+
+  const moment = require("moment");
+  let now = moment();
+  const Http = new XMLHttpRequest();
+
+   const getApi = (bdcApi) => {
+    Http.open("GET", bdcApi);
+    Http.send();
+    Http.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          const cityOb = JSON.parse(this.responseText)
+          setCityObj(cityOb)
+        }
+    };
+}
+
+
+console.log(cityObj.city)
+
+  if(weatherData === null) return <div className={classes.loader}>Loading...</div>
+  const {
     temp,
     temp_min,
     temp_max,
@@ -49,35 +92,16 @@ const Weather = ({
     wind_speed,
     clouds,
   } = weatherData.current;
-  const { weatherType, weatherTypeDescription } = weatherData.current.weather; 
-
-  useEffect(() => {
-    setFetching();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-        // setLocation and getWeatherData go to Redux
-        setLocation({ position: { latitude, longitude } });
-        getWeatherData(latitude, longitude);
-        setCityLongLat(latitude, longitude);
-      });
-    }
-  }, [setFetching, getWeatherData, setLocation, setCityLongLat]);
-
-  const moment = require("moment");
-  let now = moment();
-
-  console.log(setCityLongLat)
-
+  const weatherType = weatherData.current.weather[0].main;
+  
   return (
     <Grid container direction="column" className={classes.Weather}>
-      <h1 className={classes.City}>{city}</h1>
+      <h1 className={classes.City}>{cityObj.city}, {cityObj.countryCode}</h1>
       <h5 className={classes.Date}>{now.format("DD-MM-YYYY")}</h5>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={6}>
           <div className={classes.Information}>
-            <Temperature temp={temp} main={weatherType} /> 
+            <Temperature temp={Math.round(temp)} main={weatherType} />
           </div>
         </Grid>
         <Grid item xs={12} lg={6}>
@@ -90,7 +114,7 @@ const Weather = ({
               wind={wind_speed}
               overcast={clouds}
               main={weatherType}
-            /> 
+            />
           </div>
         </Grid>
       </Grid>
@@ -104,11 +128,10 @@ const Weather = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.weather);
   return {
     currentLocation: state.location,
     weatherData: state.weather,
-    city: state.city,
+    city: state.setCity
   };
 };
 
@@ -117,9 +140,8 @@ const mapDispatchToProps = (dispatch) => {
     setFetching: () => dispatch(setFetchingTrue()),
     setLocation: (location) => dispatch(setCurrentLocation(location)),
     getWeatherData: (latitude, longitude) =>
-      dispatch(getWeatherData(latitude, longitude)),
+    dispatch(getWeatherData(latitude, longitude)),
     clearLocation: () => dispatch(clearLocation()),
-    setCityLongLat: (lat, long) => dispatch(setCity(lat, long)),
   };
 };
 

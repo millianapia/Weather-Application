@@ -32,11 +32,8 @@ export const setError = (error) => {
   return { type: actionTypes.SET_ERROR, payload: error };
 };
 
-export const setCity = (cityData) => {
-  return { type: actionTypes.SET_CITY, payload: cityData };
-};
 
-const key = process.env.REACT_APP_KEY
+const key = process.env.REACT_APP_KEY;
 
 export const getWeatherData = (lat, lon) => {
   let api =
@@ -51,19 +48,3 @@ export const getWeatherData = (lat, lon) => {
   };
 };
 
-const googleAPI = process.env.REACT_APP_GOOGLE;
-
-export const getCityData = (lat, lon) => {
-  let api =
-    "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=" +
-    googleAPI;
-  return (dispatch) => {
-    fetch(api)
-      .then((response) => {
-        response.json();
-        console.log(response)
-      })
-      .then((data) => dispatch(setCity(data)))
-      .catch((error) => dispatch(setError(error)));
-  };
-};
