@@ -12,7 +12,7 @@ const temperature = (props) => {
       </Grid>
         <Grid item xs container direction="column"  justify="center">
           <Grid item >
-            <div className={classes.Temp}>{props.temp}</div>
+            <div className={classes.Temp}>{props.temp}<span>&#8451;</span></div>
             </Grid>
             <Grid item >
           <div className={classes.Temp}>{props.main}</div>

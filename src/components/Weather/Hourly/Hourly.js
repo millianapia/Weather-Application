@@ -1,13 +1,15 @@
 import React from "react"
 import classes from "./Hourly.module.css"
+import WeatherGenerator from "../../WeatherGenerator/WeatherGenerator";
 
 const hourly = (props) => (
-    <article className={classes.Hourly}>
-        <p>{props.hour}</p>
+    <div className={classes.hourly}>
+        <WeatherGenerator weather={props.weather} size={"50%"} />
+        <p>{props.day}</p>
         <p>{props.weather}</p>
-        <p>{props.temperature}</p>
+        <p>{Math.round(props.temperature)}<span>&#8451;</span></p>
 
-    </article>
+    </div>
 )
 
 export default hourly;

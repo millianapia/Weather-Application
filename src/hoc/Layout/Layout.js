@@ -11,9 +11,6 @@ class Layout extends Component{
         return(
             
             <div className={classes.App} >
-                <div className={classes.Content}>
-                    <Toolbar/>
-                </div>
                 <Weather/>
             </div>
         );
